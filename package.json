@@ -1,0 +1,23 @@
+{
+  "name": "devcamp-api",
+  "version": "1.0.0",
+  "description": "devcamper backend api",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuji-ohara/devcamp-api.git"
+  },
+  "keywords": [
+    "node",
+    "api"
+  ],
+  "author": "Ohara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuji-ohara/devcamp-api/issues"
+  },
+  "homepage": "https://github.com/yuji-ohara/devcamp-api#readme"
+}
