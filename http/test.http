@@ -1,0 +1,9 @@
+GET http://localhost:5000/api/v1/bootcamps
+
+POST http://localhost:5000/api/v1/bootcamps
+
+GET http://localhost:5000/api/v1/bootcamps/1
+
+PUT http://localhost:5000/api/v1/bootcamps/1
+
+DELETE http://localhost:5000/api/v1/bootcamps/1

@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "NODE_ENV=production node server",
-    "dev": "node server.js"
+    "serve": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,8 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "win-node-env": "^0.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
