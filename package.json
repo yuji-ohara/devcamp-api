@@ -4,7 +4,8 @@
   "description": "devcamper backend api",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE_ENV=production node server",
+    "dev": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/yuji-ohara/devcamp-api/issues"
   },
-  "homepage": "https://github.com/yuji-ohara/devcamp-api#readme"
+  "homepage": "https://github.com/yuji-ohara/devcamp-api#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "win-node-env": "^0.4.0"
+  }
 }
