@@ -4,6 +4,6 @@ POST http://localhost:5000/api/v1/bootcamps
 
 GET http://localhost:5000/api/v1/bootcamps/1
 
-PUT http://localhost:5000/api/v1/bootcamps/1
+PUT http://localhost:5000/api/v1/bootcamps/2
 
-DELETE http://localhost:5000/api/v1/bootcamps/1
+DELETE http://localhost:5000/api/v1/bootcamps/3
