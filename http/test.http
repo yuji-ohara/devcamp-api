@@ -1,5 +1,8 @@
 GET http://localhost:5000/api/v1/bootcamps
 
+GET http://localhost:5000/api/v1/bootcamps/radius/02118/10
+
+
 POST http://localhost:5000/api/v1/bootcamps
 Content-Type: application/json
 
@@ -49,4 +52,4 @@ Content-Type: application/json
     "createdAt": "2020-09-09T19:22:36.629Z"
   }
 
-DELETE http://localhost:5000/api/v1/bootcamps/5f592b7c6a49213ceca21269
+DELETE http://localhost:5000/api/v1/bootcamps/5f594500fc8fba2d5839479b

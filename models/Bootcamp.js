@@ -109,9 +109,11 @@ BootcampSchema.pre('save', async function(next) {
         street: location.streetName,
         city: location.city,
         state: location.stateCode,
-        country: location.countryCode,
-        zipcode: location.zipcode
+        zipcode: location.zipcode,
+        country: location.countryCode
     };
+
+    this.address = undefined;
     next();
 });
 
