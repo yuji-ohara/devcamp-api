@@ -65,4 +65,4 @@ Content-Type: application/json
     "createdAt": "2020-09-09T19:22:36.629Z"
   }
 
-DELETE http://localhost:5000/api/v1/bootcamps/5f594500fc8fba2d5839479b
+DELETE http://localhost:5000/api/v1/bootcamps/5d713995b721c3bb38c1f5d0

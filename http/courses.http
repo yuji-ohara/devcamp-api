@@ -1,4 +1,17 @@
 GET http://localhost:5000/api/v1/courses
 
-GET http://localhost:5000/api/v1/bootcamps/5d713995b721c3bb38c1f5d0/courses
+GET http://localhost:5000/api/v1/bootcamps/5d725a1b7b292f5f8ceff788/courses
 
+GET http://localhost:5000/api/v1/courses/5d725cb9c4ded7bcb480eaa1
+
+POST http://localhost:5000/api/v1/bootcamps/5d725a1b7b292f5f8ceff788/courses
+Content-Type: application/json
+
+{
+    "scholarshipAvailabel": false,
+    "title": "testes",
+    "description": "testes testestes tse tsesstese",
+    "weeks": "10",
+    "tuition": 999,
+    "minimumSkill": "intermediate"
+}
