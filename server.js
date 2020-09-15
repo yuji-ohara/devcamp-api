@@ -11,6 +11,7 @@ const PORT = process.env.PORT;
 connectDB();
 
 const bootcamps = require('./routes/bootcamps');
+const courses = require('./routes/courses');
 
 const app = express();
 if(process.env.NODE_ENV === 'development') {
@@ -18,6 +19,7 @@ if(process.env.NODE_ENV === 'development') {
 }
 app.use(express.json());
 app.use('/api/v1/bootcamps', bootcamps);
+app.use('/api/v1/courses', courses);
 app.use(errorHandler); //after other stuff, so it can capture, otherwise it wont
 
 const server = app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port: ${PORT}`.yellow.bold));

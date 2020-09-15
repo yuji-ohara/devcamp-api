@@ -2,6 +2,19 @@ GET http://localhost:5000/api/v1/bootcamps
 
 GET http://localhost:5000/api/v1/bootcamps/radius/02118/10
 
+GET http://localhost:5000/api/v1/bootcamps?location.state=MA&housing=true
+
+GET http://localhost:5000/api/v1/bootcamps?careers[in]=Web Development
+
+GET http://localhost:5000/api/v1/bootcamps?select=name,description
+
+GET http://localhost:5000/api/v1/bootcamps?averageCost[gte]=10000
+
+GET http://localhost:5000/api/v1/bootcamps?select=name,description
+
+GET http://localhost:5000/api/v1/bootcamps?select=name,description&page=2&limit=1
+
+GET http://localhost:5000/api/v1/bootcamps?select=name,description&sort=name
 
 POST http://localhost:5000/api/v1/bootcamps
 Content-Type: application/json
