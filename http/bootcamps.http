@@ -23,7 +23,7 @@ POST http://localhost:5000/api/v1/bootcamps
 Content-Type: application/json
 
 {
-    "name": "Devworks Bootcamp",
+  "name": "Devworks Bootcamp",
 	"description": "Devworks is a full stack JavaScript Bootcamp located in the heart of Boston that focuses on the technologies you need to get a high paying job as a web developer",
 	"website": "https://devworks.com",
 	"phone": "(111) 111-1111",
@@ -66,3 +66,13 @@ Content-Type: application/json
   }
 
 DELETE http://localhost:5000/api/v1/bootcamps/5d713995b721c3bb38c1f5d0
+
+PUT http://localhost:5000/api/v1/bootcamps/5d713995b721c3bb38c1f5d0/photo
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="cebolas (1).jpg"
+Content-Type: image/jpg
+
+< ./img/cebolas (1).jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--

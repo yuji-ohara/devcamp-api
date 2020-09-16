@@ -1,3 +1,4 @@
+const path = require('path');
 const geocoder = require('../utils/geocoder');
 const Bootcamp = require('../models/Bootcamp');
 const ErrorResponse = require('../utils/errorResponse');
@@ -116,4 +117,41 @@ exports.getBootcampsInRadius = asyncHandler(async (request, response, next) => {
         count: bootcamps.length,
         data: bootcamps
     })
+});
+
+exports.bootcampPhotoUpload = asyncHandler(async (request, response, next) => {
+    const bootcamp = await Bootcamp.findById(request.params.id);
+
+    if (!bootcamp) {
+        return next(new ErrorResponse(`Bootcamp not found ${request.params.id}`, 404));
+    }
+
+    if(!request.files) {
+        return next(new ErrorResponse('No file detected', 400));
+    }
+
+    const file = request.files.file;
+    
+    if(!file.mimetype.startsWith('image')) {
+        return next(new ErrorResponse('Incorrect file type', 400));
+    }
+
+    if(file.size > process.env.FILE_UPLOAD_MAX_SIZE)     {
+        return next(new ErrorResponse('File is too big', 400));
+    }
+
+    const filename = `bootcamp_${bootcamp._id}${path.parse(file.name).ext}`;
+    
+    file.mv(`${process.env.FILE_UPLOAD_PATH}/${filename}`, async (error) => {
+        if(error) {
+            console.log(error);
+            return next(new ErrorResponse('Server error', 500));
+        }
+
+        await Bootcamp.findByIdAndUpdate(request.params.id, {
+            photo: filename
+        });
+
+        response.status(200).json({ success: true, data: filename });
+    });
 });

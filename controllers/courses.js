@@ -60,3 +60,18 @@ exports.updateCourse = asyncHandler(async (request, response, next) => {
 
     response.status(200).json({ success: true, data: course });
 });
+
+exports.deleteCourse = asyncHandler(async (request, response, next) => {
+    const course = await Course.findById(request.params.id, request.body, {
+        new: true,
+        runValidators: true
+    });
+
+    if(!course) {
+        return next(new ErrorResponse(`Not found id: ${request.params.id}`, 404));
+    }
+
+    await course.remove();
+
+    response.status(200).json({ success: true, data: `Course deleted id: ${request.params.id}` });
+});
