@@ -1,5 +1,7 @@
 GET http://localhost:5000/api/v1/courses
 
+GET http://localhost:5000/api/v1/courses?select=title&page=2&limit=1
+
 GET http://localhost:5000/api/v1/bootcamps/5d713995b721c3bb38c1f5d0/courses
 
 GET http://localhost:5000/api/v1/courses/5d725cb9c4ded7bcb480eaa1

@@ -4,21 +4,13 @@ const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middleware/async');
 
 exports.getCourses = asyncHandler(async (request, response, next) => {
-    let query;
-    
     if(request.params.bootcampId) {
-        query = Course.find({ bootcamp: request.params.bootcampId });
+        const courses = await Course.find({ bootcamp: request.params.bootcampId });
+        return response.status(200).json({ success: true, data: courses });
     }
     else {
-        query = Course.find().populate({
-            path: 'bootcamp',
-            select: 'name description'
-        });
+        response.status(200).json(response.advancedResults);
     }
-
-    const courses = await query;
-
-    response.status(200).json({ success: true, count: courses.length, data: courses });
 });
 
 exports.getCourse = asyncHandler(async (request, response, next) => {
