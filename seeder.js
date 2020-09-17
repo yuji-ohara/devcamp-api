@@ -20,26 +20,26 @@ const bootcamps = JSON.parse(fs.readFileSync(`${__dirname}/_data/bootcamps.json`
 const courses = JSON.parse(fs.readFileSync(`${__dirname}/_data/courses.json`, 'utf-8'));
 const users = JSON.parse(fs.readFileSync(`${__dirname}/_data/users.json`, 'utf-8'));
 
-const importData = async() => {
+const importData = async(terminateProcess) => {
     try {
         await Bootcamp.create(bootcamps);
         await Course.create(courses);
         await User.create(users);
         console.log('Data imported'.green.inverse);
-        process.exit();
+        if(terminateProcess === true) process.exit();
     }
     catch(error) {
         console.log(error);
     }
 }
 
-const deleteData = async() => {
+const deleteData = async(terminateProcess) => {
     try {
         await Bootcamp.deleteMany();
         await Course.deleteMany();
-        await Users.deleteMany();
+        await User.deleteMany();
         console.log('Data destroyed'.red.inverse);
-        process.exit();
+        if(terminateProcess === true) process.exit();
     }
     catch(error) {
         console.log(error);
@@ -47,12 +47,12 @@ const deleteData = async() => {
 }
 
 if(process.argv[2] === '-i') {
-    importData();
+    importData(true);
 }
 else if(process.argv[2] === '-d') {
-    deleteData();
+    deleteData(true);
 }
 else if(process.argv[2] === '-r') {
-    deleteData();
-    importData();
+    deleteData(false);
+    importData(true);
 }

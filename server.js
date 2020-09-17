@@ -6,6 +6,7 @@ const colors = require('colors');
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
 const fileupload = require('express-fileupload');
+const cookieParser = require('cookie-parser');
 
 dotenv.config({ path: './config/config.env' });
 const PORT = process.env.PORT;
@@ -23,6 +24,7 @@ if(process.env.NODE_ENV === 'development') {
 }
 
 app.use(fileupload());
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use('/api/v1/auth', auth);

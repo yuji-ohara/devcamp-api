@@ -19,6 +19,14 @@ exports.getBootcamp = asyncHandler(async (request, response, next) => {
 });
 
 exports.createBootcamp = asyncHandler(async (request, response, next) => {
+    request.body.user = request.user.id;
+
+    const publishedBootcamp = await Bootcamp.findOne({ user: request.user.id });
+
+    if(publishedBootcamp && request.user.role !== 'admin') {
+        return next(new ErrorResponse(`The user ${request.user.id} already have a published bootcamp`, 400));
+    }
+
     const newBootcamp = await Bootcamp.create(request.body);
     response.status(201).json({ success: true, data: newBootcamp });
 });

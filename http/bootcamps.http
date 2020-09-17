@@ -21,9 +21,10 @@ Content-Type: application/json
 
 POST http://localhost:5000/api/v1/bootcamps
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjM4MTliNzZlZjFiMTMxNDQzMzhhMyIsImlhdCI6MTYwMDM1Njc2MywiZXhwIjoxNjAyOTQ4NzYzfQ.fU8-xUYMQ4wzRL2KbdMbEK6TThe39QTKS7_Ev7Ml_tU
 
 {
-  "name": "Devworks Bootcamp",
+  "name": "Devworks Bootcamp TESTS",
 	"description": "Devworks is a full stack JavaScript Bootcamp located in the heart of Boston that focuses on the technologies you need to get a high paying job as a web developer",
 	"website": "https://devworks.com",
 	"phone": "(111) 111-1111",
