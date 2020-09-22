@@ -1,4 +1,6 @@
-GET http://localhost:5000/api/v1/bootcamps
+GET http://localhost:5000/api/v1/bootcamps/
+
+GET http://localhost:5000/api/v1/bootcamps/5d713995b721c3bb38c1f5d0
 
 GET http://localhost:5000/api/v1/bootcamps/radius/02118/10
 
