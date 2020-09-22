@@ -9,9 +9,9 @@ exports.protect = asyncHandler(async (request, response, next) => {
     if(request.headers.authorization && request.headers.authorization.startsWith('Bearer')) {
         token = request.headers.authorization.split(' ')[1];
     }
-    // else if(request.cookies.token) {
-    //     token = request.cookies.token;
-    // }
+    else if(request.cookies.token) {
+        token = request.cookies.token;
+    }
 
     if(!token) {
         return next(new ErrorResponse('Unauthorized route', 401));

@@ -39,6 +39,15 @@ exports.login = asyncHandler(async (request, response, next) => {
     sendTokenResponse(user, 200, response);
 });
 
+exports.logout = asyncHandler(async (request, response, next) => {
+    response.cookie('token', 'none', {
+        expires: new Date(Date.now() + (10 * 1000)),
+        httpOnly: true
+    });
+
+    response.status(200).json({ success: true, data: {} });
+});
+
 exports.getMe = asyncHandler(async (request, response, next) => {
     const user = await User.findById(request.user.id);
 
