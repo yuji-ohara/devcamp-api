@@ -12,10 +12,23 @@ POST http://localhost:5000/api/v1/auth/login
 Content-Type: application/json
 
 {
-    "email" : "ca.ohara2@gmail.com",
-    "password" : "123456"
+    "email" : "ca.ohara@gmail.com",
+    "password" : "1234567"
 }
 
 GET http://localhost:5000/api/v1/auth/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjM3MTk0NDkzNjBkNGZhNDUxYTI0ZCIsImlhdCI6MTYwMDM1NTM3OCwiZXhwIjoxNjAyOTQ3Mzc4fQ.pcKa6ygm3VwqC__e0SQhjqxkRjbMJtMA9qnKMtEKooc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNmE1NmQ2ODIzNTc3NGY3NDc5NzM2YiIsImlhdCI6MTYwMDgwNjYwNiwiZXhwIjoxNjAzMzk4NjA2fQ.TQbLGw1wUm7Y3f2vlT6BqJEYlSL8Uwb-1i01IRpBm78
 
+POST http://localhost:5000/api/v1/auth/forgot-password
+Content-Type: application/json
+
+{
+    "email" : "ca.ohara@gmail.com"
+}
+
+PUT http://localhost:5000/api/v1/auth/reset-password/6d0a6535c56d00d056d8f2c557bfb190deba4b6d
+Content-Type: application/json
+
+{
+    "password": "1234567"
+}
