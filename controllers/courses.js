@@ -28,11 +28,16 @@ exports.getCourse = asyncHandler(async (request, response, next) => {
 
 exports.createCourse = asyncHandler(async (request, response, next) => {
     request.body.bootcamp = request.params.bootcampId;
+    request.body.user = request.user.id;
     
     const bootcamp = await Bootcamp.findById(request.params.bootcampId);
 
     if(!bootcamp) {
         return next(new ErrorResponse(`Bootcamp not found id: ${request.params.bootcampId}`, 404));
+    }
+
+    if(bootcamp.user.id.toString() !== request.user.id && request.user.role !== 'admin') {
+        return next(new ErrorResponse(`User ${request.user.id} not authorized to create in this bootcamp ${bootcamp._id}`, 401));
     }
 
     const newCourse = await Course.create(request.body);
@@ -41,14 +46,20 @@ exports.createCourse = asyncHandler(async (request, response, next) => {
 });
 
 exports.updateCourse = asyncHandler(async (request, response, next) => {
-    const course = await Course.findByIdAndUpdate(request.params.id, request.body, {
-        new: true,
-        runValidators: true
-    });
+    let course = await Course.findById(request.params.id);
 
     if(!course) {
         return next(new ErrorResponse(`Not found id: ${request.params.id}`, 404));
     }
+
+    if(course.user.id.toString() !== request.user.id && request.user.role !== 'admin') {
+        return next(new ErrorResponse(`User ${request.user.id} not authorized to update course ${course._id}`, 401));
+    }
+
+    course = await Course.findByIdAndUpdate(request.params.id, request.body, {
+        new: true,
+        runValidators: true
+    });
 
     response.status(200).json({ success: true, data: course });
 });
@@ -61,6 +72,10 @@ exports.deleteCourse = asyncHandler(async (request, response, next) => {
 
     if(!course) {
         return next(new ErrorResponse(`Not found id: ${request.params.id}`, 404));
+    }
+
+    if(course.user.id.toString() !== request.user.id && request.user.role !== 'admin') {
+        return next(new ErrorResponse(`User ${request.user.id} not authorized to update course ${course._id}`, 401));
     }
 
     await course.remove();

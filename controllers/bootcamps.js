@@ -32,14 +32,20 @@ exports.createBootcamp = asyncHandler(async (request, response, next) => {
 });
 
 exports.updateBootcamp = asyncHandler(async (request, response, next) => {
-    const bootcamp = await Bootcamp.findByIdAndUpdate(request.params.id, request.body, {
-        new: true,
-        runValidators: true
-    });
+    let bootcamp = await Bootcamp.findById(request.params.id);
 
     if (!bootcamp) {
         return next(new ErrorResponse(`Bootcamp not found ${request.params.id}`, 404));
     }
+
+    if(bootcamp.user.toString() !== request.user.id &&  request.user.role !== 'admin') {
+        return next(new ErrorResponse(`User ${request.params.id} not authorized to update`, 401));
+    }
+
+    bootcamp = await Bootcamp.findByIdAndUpdate(request.params.id, request.body, {
+        new: true,
+        runValidators: true
+    });
 
     response.status(200).json({ success: true, data: bootcamp });
 });
@@ -49,6 +55,10 @@ exports.deleteBootcamp = asyncHandler(async (request, response, next) => {
 
     if (!bootcamp) {
         return next(new ErrorResponse(`Bootcamp not found ${request.params.id}`, 404));
+    }
+
+    if(bootcamp.user.toString() !== request.user.id &&  request.user.role !== 'admin') {
+        return next(new ErrorResponse(`User ${request.params.id} not authorized to delete`, 401));
     }
 
     bootcamp.remove();
