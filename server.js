@@ -12,6 +12,7 @@ const helmet = require('helmet');
 const xss = require('xss-clean');
 const rateLimit = require('express-rate-limit');
 const hpp = require('hpp');
+const cors = require('cors');
 
 dotenv.config({ path: './config/config.env' });
 const PORT = process.env.PORT;
@@ -34,8 +35,12 @@ app.use(fileupload());
 app.use(mongoSanitize());
 app.use(helmet());
 app.use(xss());
-app.use(rateLimit());
+app.use(rateLimit({
+    windowMs: 10 * 60 * 1000,
+    max: 100
+}));
 app.use(hpp());
+app.use(cors());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
