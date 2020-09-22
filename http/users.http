@@ -1,0 +1,28 @@
+GET http://localhost:5000/api/v1/users/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkN2E1MTRiNWQyYzEyYzc0NDliZTA0MiIsImlhdCI6MTYwMDgwODM1MywiZXhwIjoxNjAzNDAwMzUzfQ.1mmkgTxjQsKUSb8NXFR8LEVrDksefJeMOiOghXr1ucE
+
+GET http://localhost:5000/api/v1/users/5d7a514b5d2c12c7449be044
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkN2E1MTRiNWQyYzEyYzc0NDliZTA0MiIsImlhdCI6MTYwMDgwODM1MywiZXhwIjoxNjAzNDAwMzUzfQ.1mmkgTxjQsKUSb8NXFR8LEVrDksefJeMOiOghXr1ucE
+
+POST http://localhost:5000/api/v1/users/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkN2E1MTRiNWQyYzEyYzc0NDliZTA0MiIsImlhdCI6MTYwMDgwODM1MywiZXhwIjoxNjAzNDAwMzUzfQ.1mmkgTxjQsKUSb8NXFR8LEVrDksefJeMOiOghXr1ucE
+Content-Type: application/json
+
+{
+    "role": "user",
+    "name": "Testondo",
+    "email": "testondo@gmail.com",
+    "password": "123456"
+}
+
+PUT http://localhost:5000/api/v1/users/5f6a6626d547134b0c6fe9cb
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkN2E1MTRiNWQyYzEyYzc0NDliZTA0MiIsImlhdCI6MTYwMDgwODM1MywiZXhwIjoxNjAzNDAwMzUzfQ.1mmkgTxjQsKUSb8NXFR8LEVrDksefJeMOiOghXr1ucE
+Content-Type: application/json
+
+{
+    "name": "Testondo2",
+    "email": "testondo2@gmail.com"
+}
+
+DELETE http://localhost:5000/api/v1/users/5f6a6626d547134b0c6fe9cb
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkN2E1MTRiNWQyYzEyYzc0NDliZTA0MiIsImlhdCI6MTYwMDgwODM1MywiZXhwIjoxNjAzNDAwMzUzfQ.1mmkgTxjQsKUSb8NXFR8LEVrDksefJeMOiOghXr1ucE
