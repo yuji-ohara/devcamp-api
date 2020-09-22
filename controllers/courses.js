@@ -6,7 +6,7 @@ const asyncHandler = require('../middleware/async');
 exports.getCourses = asyncHandler(async (request, response, next) => {
     if(request.params.bootcampId) {
         const courses = await Course.find({ bootcamp: request.params.bootcampId });
-        return response.status(200).json({ success: true, data: courses });
+        return response.status(200).json({ success: true, count: courses.length, data: courses });
     }
     else {
         response.status(200).json(response.advancedResults);

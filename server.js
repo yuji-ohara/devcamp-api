@@ -17,6 +17,7 @@ const bootcamps = require('./routes/bootcamps');
 const courses = require('./routes/courses');
 const auth = require('./routes/auth');
 const users = require('./routes/users');
+const reviews = require('./routes/reviews');
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use('/api/v1/auth', auth);
 app.use('/api/v1/bootcamps', bootcamps);
 app.use('/api/v1/courses', courses);
 app.use('/api/v1/users', users);
+app.use('/api/v1/reviews', reviews);
 app.use(errorHandler); //after other stuff, so it can capture, otherwise it wont
 
 const server = app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port: ${PORT}`.yellow.bold));
