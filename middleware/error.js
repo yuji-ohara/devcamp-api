@@ -7,7 +7,7 @@ function errorHandler(error, request, response, next) {
     console.log(error);
 
     if(error.name === 'CastError') {
-        const message = `Resource not found with id: ${error.value}`;
+        const message = 'Resource not found';
         customError = new ErrorResponse(message, 404);
     }
 
